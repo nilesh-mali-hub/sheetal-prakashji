@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-cinzel: "Cinzel", serif;
+  --font-script: "Mrs Saint Delafield", cursive;
+  --font-hindi: "Anek Devanagari", sans-serif;
+
+  /* Exact Color Palette Extracted from Official SP Monogram Logo */
+  --color-teal-deep: #2F504F;
+  --color-teal-dark: #1F3837;
+  --color-teal-muted: #466967;
+  --color-brass-antique: #8B7856;
+  --color-brass-warm: #968667;
+  --color-sand-rim: #D3C5B0;
+  --color-rose-crimson: #BD374E;
+  --color-rose-dusty: #A77F87;
+  --color-blush-soft: #D6B0A5;
+  --color-ivory-canvas: #FBF5F2;
+  --color-ivory-card: #FDF9F7;
+  --color-parchment-outer: #F3EAE3;
+  --color-ink-charcoal: #322F2A;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-parchment-outer);
+    color: var(--color-ink-charcoal);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.bg-motif {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 620px at 50% -8%, rgba(214, 176, 165, 0.3), transparent 60%),
+    radial-gradient(900px 520px at 100% 108%, rgba(47, 80, 79, 0.08), transparent 60%),
+    radial-gradient(800px 500px at 0% 50%, rgba(189, 55, 78, 0.07), transparent 55%),
+    #F3EAE3;
+}
+
+.petal {
+  position: fixed;
+  top: -5%;
+  z-index: 2;
+  pointer-events: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 0 60% 0 60%;
+  background: linear-gradient(135deg, rgba(244, 194, 209, 0.9), rgba(189, 55, 78, 0.68));
+  opacity: 0.48;
+  will-change: transform;
+  filter: drop-shadow(0 2px 4px rgba(189, 55, 78, 0.18));
+  animation: fall linear infinite;
+}
+.petal--gold {
+  background: linear-gradient(135deg, rgba(211, 197, 176, 0.92), rgba(139, 120, 86, 0.72));
+  filter: drop-shadow(0 2px 5px rgba(139, 120, 86, 0.24));
+}
+@keyframes fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(22px, 58vh, 0) rotate(185deg); }
+  100% { transform: translate3d(-10px, 115vh, 0) rotate(360deg); }
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-140%) skewX(-12deg); }
+  55%, 100% { transform: translateX(260%) skewX(-12deg); }
+}
+
+.glass-card {
+  background: #FDF9F7;
+  border: 1px solid rgba(139, 120, 86, 0.35);
+  border-radius: 14px;
+  position: relative;
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
