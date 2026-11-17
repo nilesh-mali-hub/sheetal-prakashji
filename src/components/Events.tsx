@@ -1,6 +1,7 @@
 import React from 'react';
 import { CalendarPlus, Share2 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { downloadWeddingIcs } from '../utils/calendar';
 
 interface WeddingEvent {
   title: string;
@@ -44,34 +45,7 @@ export default function Events() {
   ];
 
   const handleAddToCalendar = () => {
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Sheetal and Prakash Wedding//EN
-CALSCALE:GREGORIAN
-BEGIN:VEVENT
-SUMMARY:Sheetal & Prakash Ji's Wedding Celebrations
-DTSTART;TZID=Asia/Kolkata:20261203T100000
-DTEND;TZID=Asia/Kolkata:20261206T000000
-LOCATION:https://maps.app.goo.gl/xci1FQXozgPz2u698
-DESCRIPTION:Join us in celebrating the wedding of Sheetal & Prakash Ji! Events include Haldi, Mehendi, Sangeet, Bindoli, and The Wedding. Location: https://maps.app.goo.gl/xci1FQXozgPz2u698
-STATUS:CONFIRMED
-SEQUENCE:0
-BEGIN:VALARM
-TRIGGER:-PT24H
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Sheetal & Prakash Ji's Wedding Celebrations start tomorrow!
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
-
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'sheetal_prakash_wedding.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    downloadWeddingIcs();
   };
 
   const shareMessage = `✨💍 *Shubh Vivah Invitation* 💍✨\n\n🙏 *॥ श्री गणेशाय नमः ॥*\n\n🌸 Together with our families, we joyfully invite you to celebrate the wedding of\n💐 *Sheetal & Prakash Ji* 💐\n\n🗓️ *Celebration Dates:*\n🌸 Haldi, 🌿 Mehendi & 🎵 Sangeet — *03 Dec 2026*\n🥁 Bindoli — *04 Dec 2026*\n💍 The Wedding (शुभ विवाह) — *05 Dec 2026*\n\n📍 *Location:*\nhttps://maps.app.goo.gl/xci1FQXozgPz2u698\n\n💌 *Open Your Digital Invitation:*\n🌐 https://sheetal-prakashji.vercel.app/\n\n🪔 Your presence and blessings mean the world to us! ❤️🎉`;

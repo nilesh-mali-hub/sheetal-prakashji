@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 interface QuoteItem {
   text: string;
   attribution?: string;
+  credit?: string;
   isHindi: boolean;
 }
 
@@ -26,6 +27,7 @@ const WEDDING_QUOTES: QuoteItem[] = [
   {
     text: 'रब ने मिलाई जोड़ी, खुशियों से सजा आँगन,\nसात फेरों संग बंधा, जन्मों-जन्मों का बंधन।',
     attribution: 'शुभ विवाह · ५ दिसंबर २०२६',
+    credit: 'नीलेश माली',
     isHindi: true,
   },
   {
@@ -228,6 +230,17 @@ export default function WeddingQuotes() {
                     >
                       — {current.attribution}
                     </cite>
+                  )}
+
+                  {current.credit && (
+                    <a
+                      href="https://nilesh.runs-on.dev/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1.5 font-hindi text-xs sm:text-[13px] text-[#2F504F]/85 hover:text-[#BD374E] tracking-wider font-medium transition-colors"
+                    >
+                      — {current.credit} —
+                    </a>
                   )}
                 </motion.div>
               </AnimatePresence>

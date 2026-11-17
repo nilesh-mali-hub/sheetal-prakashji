@@ -340,8 +340,8 @@ export default function Hero({
               </ScratchCard>
             </div>
 
-            {/* Minimal Wedding Countdown Timer Widget (after Scratch to Reveal) */}
-            <CountdownTimer targetDate="2026-12-05T00:00:00" />
+            {/* Minimal Wedding Countdown Timer Widget (Days, Hours & Minutes) */}
+            <CountdownTimer targetDate="2026-12-05T00:00:00+05:30" />
 
             {/* CTA: Open Invitation Button */}
             <button
