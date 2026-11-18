@@ -14,6 +14,7 @@ import AudioPlayer from './components/AudioPlayer';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import WeddingQuotes from './components/WeddingQuotes';
 import EventMap from './components/EventMap';
+import HeartCursor from './components/HeartCursor';
 import YouTubeAudioEngine, { YouTubeAudioEngineHandle } from './components/YouTubeAudioEngine';
 import { createScrollReactivePetals } from './utils/petals';
 
@@ -141,6 +142,9 @@ export default function App() {
 
       {/* Thin Top Invitation Scroll Depth Progress Bar */}
       <ScrollProgressBar />
+
+      {/* Gentle Floating Rose-Heart Click Sparkle */}
+      <HeartCursor />
 
       {/* Ambient background texture */}
       <div className="bg-motif" />

@@ -32,6 +32,29 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  @media (hover: hover) and (pointer: fine) {
+    html,
+    body {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 20.5C12 20.5 4 15 4 9.5C4 6.8 6.1 4.8 8.6 4.8C10.2 4.8 11.4 5.6 12 6.8C12.6 5.6 13.8 4.8 15.4 4.8C17.9 4.8 20 6.8 20 9.5C20 15 12 20.5 12 20.5Z' fill='%23D6456B' stroke='%23FDF9F7' stroke-width='1.8' stroke-linejoin='round'/%3E%3Ccircle cx='8.6' cy='8.4' r='1.1' fill='%23FDE8EF' opacity='0.9'/%3E%3C/svg%3E") 12 12, auto;
+    }
+
+    a,
+    button,
+    [role="button"],
+    select,
+    summary,
+    .cursor-pointer {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 23.6C14 23.6 4.5 17 4.5 10.6C4.5 7.4 7 5 9.9 5C11.8 5 13.2 6 14 7.4C14.8 6 16.2 5 18.1 5C21 5 23.5 7.4 23.5 10.6C23.5 17 14 23.6 14 23.6Z' fill='%23BD374E' stroke='%23FDF9F7' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M14 23.6C14 23.6 4.5 17 4.5 10.6C4.5 7.4 7 5 9.9 5C11.8 5 13.2 6 14 7.4C14.8 6 16.2 5 18.1 5C21 5 23.5 7.4 23.5 10.6C23.5 17 14 23.6 14 23.6Z' fill='none' stroke='%23D3C5B0' stroke-width='0.8'/%3E%3Ccircle cx='9.9' cy='9.3' r='1.3' fill='%23FFF5F8' opacity='0.9'/%3E%3C/svg%3E") 14 14, pointer !important;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea {
+      cursor: text;
+    }
+  }
 }
 
 .bg-motif {

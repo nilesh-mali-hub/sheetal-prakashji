@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 
 interface CountdownTimerProps {
   targetDate?: string;
+  variant?: 'card' | 'minimal';
 }
 
 interface TimeRemaining {
@@ -30,6 +31,7 @@ function calculateTimeRemaining(targetTimestamp: number): TimeRemaining {
 
 export default function CountdownTimer({
   targetDate = '2026-12-05T00:00:00+05:30',
+  variant = 'card',
 }: CountdownTimerProps) {
   const prefersReducedMotion = useReducedMotion();
   const targetTimestamp = useMemo(() => new Date(targetDate).getTime(), [targetDate]);
@@ -49,10 +51,50 @@ export default function CountdownTimer({
   const pad = (value: number) => String(value).padStart(2, '0');
 
   const units = [
-    { label: 'Days', value: pad(timeLeft.days) },
-    { label: 'Hours', value: pad(timeLeft.hours) },
-    { label: 'Minutes', value: pad(timeLeft.minutes) },
+    { label: 'Days', shortLabel: 'Days', value: pad(timeLeft.days) },
+    { label: 'Hours', shortLabel: 'Hours', value: pad(timeLeft.hours) },
+    { label: 'Minutes', shortLabel: 'Min', value: pad(timeLeft.minutes) },
   ];
+
+  if (variant === 'minimal') {
+    return (
+      <motion.div
+        initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 6 }}
+        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
+        className="w-full max-w-[230px] sm:max-w-[270px] mx-auto mt-3 sm:mt-4"
+        aria-label="Countdown to 5th December 2026"
+      >
+        {timeLeft.isWeddingDay ? (
+          <p className="font-serif italic text-sm sm:text-base text-[#6E1F30] font-medium">
+            ✦ Celebrating Forever Today ✦
+          </p>
+        ) : (
+          <div className="flex items-start justify-center gap-4 sm:gap-6">
+            {units.map((unit) => (
+              <div key={unit.label} className="flex flex-col items-center min-w-[44px] sm:min-w-[52px]">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.span
+                    key={unit.value}
+                    initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0.5, y: 3 }}
+                    animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                    exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -3 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="font-serif text-[1.25rem] sm:text-[1.75rem] text-[#4C322A] font-normal leading-none tabular-nums tracking-tight"
+                  >
+                    {unit.value}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="font-cinzel text-[7.5px] sm:text-[9px] tracking-[0.18em] uppercase text-[#7A6350] mt-1">
+                  {unit.shortLabel}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div

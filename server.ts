@@ -23,12 +23,23 @@ async function startServer() {
         name TEXT NOT NULL,
         mobile TEXT NOT NULL,
         guestsCount INTEGER NOT NULL,
+        attending INTEGER DEFAULT 1,
+        dietaryRequirements TEXT DEFAULT '',
         mealPreference TEXT,
         accommodation TEXT,
         message TEXT,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `);
+
+    const columnsResult = await client.execute("PRAGMA table_info(rsvps)");
+    const existingColumns = new Set(columnsResult.rows.map((row) => String(row.name)));
+    if (!existingColumns.has("attending")) {
+      await client.execute("ALTER TABLE rsvps ADD COLUMN attending INTEGER DEFAULT 1");
+    }
+    if (!existingColumns.has("dietaryRequirements")) {
+      await client.execute("ALTER TABLE rsvps ADD COLUMN dietaryRequirements TEXT DEFAULT ''");
+    }
 
     await client.execute(`
       CREATE TABLE IF NOT EXISTS wishes (
@@ -74,10 +85,30 @@ async function startServer() {
 
   app.post("/api/rsvps", async (req, res) => {
     try {
-      const { name, mobile, guestsCount, mealPreference, accommodation, message } = req.body;
+      const {
+        name,
+        mobile,
+        guestsCount,
+        attending = true,
+        dietaryRequirements = "",
+        mealPreference,
+        accommodation = "",
+        message,
+      } = req.body;
+      const isAttending = attending === false || attending === "no" || attending === 0 ? 0 : 1;
+      const cleanDietary = typeof dietaryRequirements === "string" ? dietaryRequirements.trim() : "";
       await db.execute({
-        sql: "INSERT INTO rsvps (name, mobile, guestsCount, mealPreference, accommodation, message) VALUES (?, ?, ?, ?, ?, ?)",
-        args: [name, mobile, guestsCount, mealPreference, accommodation, message || ""]
+        sql: "INSERT INTO rsvps (name, mobile, guestsCount, attending, dietaryRequirements, mealPreference, accommodation, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        args: [
+          name,
+          mobile,
+          isAttending ? guestsCount : 0,
+          isAttending,
+          cleanDietary,
+          mealPreference || (isAttending ? cleanDietary || "Attending" : "Unable to Attend"),
+          accommodation,
+          message || "",
+        ],
       });
       res.status(201).json({ success: true });
     } catch (error) {
@@ -119,9 +150,18 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    app.use(express.static(distPath, { index: false }));
     app.get("*all", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+      const htmlPath = path.join(distPath, "index.html");
+      const appUrl = (process.env.APP_URL || "").replace(/\/$/, "");
+      if (appUrl && fs.existsSync(htmlPath)) {
+        const html = fs
+          .readFileSync(htmlPath, "utf-8")
+          .replace(/https:\/\/sheetal-prakashji\.vercel\.app/g, appUrl);
+        res.type("html").send(html);
+        return;
+      }
+      res.sendFile(htmlPath);
     });
   }
 
