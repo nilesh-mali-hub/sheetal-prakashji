@@ -188,32 +188,32 @@ export default function Hero({
           </button>
         </div>
 
-        {/* Luminous Upper-Center Typography Canvas Between Pillars & Below Toran */}
+        {/* Luminous Open-Ivory Typography Canvas Centered Strictly Below Toran & Above Mandap */}
         <motion.div
           initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
           animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="relative z-10 h-full w-full flex flex-col items-center text-center pt-[21.5%] sm:pt-[21%] px-[17%]"
+          className="absolute inset-x-0 top-[23%] bottom-[47%] z-10 flex flex-col items-center justify-center text-center px-[17%]"
         >
-          {/* Quiet Auspicious Mantra */}
-          <span className="font-hindi text-[10px] sm:text-xs tracking-[0.2em] text-[#8B6A3E]/90 font-medium mb-1">
+          {/* Auspicious Mantra */}
+          <span className="font-hindi text-[11px] sm:text-[13px] tracking-[0.18em] text-[#7A5424] font-semibold mb-1">
             ॥ श्री गणेशाय नमः ॥
           </span>
 
           {/* Poetic Quote Above Couple Names */}
-          <p className="font-serif italic text-[11px] sm:text-[14px] text-[#6A5745] leading-snug max-w-[225px] sm:max-w-[290px] mb-2.5 sm:mb-4">
+          <p className="font-serif italic text-[12px] sm:text-[14.5px] text-[#544030] leading-snug max-w-[235px] sm:max-w-[305px] text-balance mb-2 sm:mb-3.5">
             &ldquo;Two families, one open page, a lifetime to fill it.&rdquo;
           </p>
 
           {/* Grand Stacked Editorial Couple Names */}
-          <h1 className="font-serif font-normal leading-[1.03] tracking-tight text-balance">
-            <span className="block text-[clamp(2rem,8vw,3.25rem)] text-[#6E1F30] whitespace-nowrap">
+          <h1 className="font-serif font-normal leading-[1.02] tracking-tight text-balance">
+            <span className="block text-[clamp(1.85rem,7.2vw,3.05rem)] text-[#6E1F30] whitespace-nowrap">
               Sheetal
             </span>
-            <span className="block font-script text-[clamp(2.1rem,8.4vw,3.15rem)] text-[#A2742B] leading-none -my-0.5 sm:my-0.5">
+            <span className="block font-script text-[clamp(1.9rem,7.5vw,2.95rem)] text-[#A2742B] leading-none -my-0.5 sm:my-0">
               Weds
             </span>
-            <span className="block text-[clamp(2rem,8vw,3.25rem)] text-[#6E1F30] whitespace-nowrap">
+            <span className="block text-[clamp(1.85rem,7.2vw,3.05rem)] text-[#6E1F30] whitespace-nowrap">
               Prakash Ji
             </span>
           </h1>

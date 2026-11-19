@@ -3,7 +3,7 @@ const VENUE_MAPS_URL = 'https://maps.app.goo.gl/xci1FQXozgPz2u698';
 export const GOOGLE_CALENDAR_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
   'Sheetal & Prakash Ji — The Wedding'
 )}&dates=20261205/20261206&details=${encodeURIComponent(
-  `Join us in celebrating the wedding of Sheetal & Prakash Ji!\n\nCelebrations:\n• 03 Dec 2026: Haldi, Mehendi & Sangeet\n• 04 Dec 2026: Bindoli\n• 05 Dec 2026: The Wedding (Shubh Vivah)\n\nVenue Location: ${VENUE_MAPS_URL}`
+  `Join us in celebrating the wedding of Sheetal & Prakash Ji!\n\nCelebrations:\n• 01 Dec 2026: Haldi\n• 03 Dec 2026: Mehendi & Sangeet\n• 04 Dec 2026: Bindoli\n• 05 Dec 2026: The Wedding (Shubh Vivah)\n\nVenue Location: ${VENUE_MAPS_URL}`
 )}&location=${encodeURIComponent(VENUE_MAPS_URL)}`;
 
 export function downloadWeddingIcs(filename = 'sheetal_prakash_wedding.ics') {
@@ -20,7 +20,7 @@ export function downloadWeddingIcs(filename = 'sheetal_prakash_wedding.ics') {
     'DTEND;VALUE=DATE:20261206',
     'SUMMARY:Sheetal & Prakash Ji — The Wedding',
     `LOCATION:${VENUE_MAPS_URL}`,
-    `DESCRIPTION:Join us in celebrating the wedding of Sheetal & Prakash Ji! Celebrations: 03 Dec 2026 (Haldi\\, Mehendi & Sangeet)\\, 04 Dec 2026 (Bindoli)\\, 05 Dec 2026 (The Wedding). Location: ${VENUE_MAPS_URL}`,
+    `DESCRIPTION:Join us in celebrating the wedding of Sheetal & Prakash Ji! Celebrations: 01 Dec 2026 (Haldi)\\, 03 Dec 2026 (Mehendi & Sangeet)\\, 04 Dec 2026 (Bindoli)\\, 05 Dec 2026 (The Wedding). Location: ${VENUE_MAPS_URL}`,
     'STATUS:CONFIRMED',
     'SEQUENCE:0',
     'BEGIN:VALARM',

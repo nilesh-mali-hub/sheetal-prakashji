@@ -14,7 +14,7 @@ export default function Events() {
   const events: WeddingEvent[] = [
     {
       title: "Haldi",
-      date: "03 Dec 2026",
+      date: "01 Dec 2026",
       emoji: "🌸",
       description: "Turmeric rituals, auspicious yellow blooms & joyful blessings."
     },
@@ -48,7 +48,7 @@ export default function Events() {
     downloadWeddingIcs();
   };
 
-  const shareMessage = `✨💍 *Shubh Vivah Invitation* 💍✨\n\n🙏 *॥ श्री गणेशाय नमः ॥*\n\n🌸 Together with our families, we joyfully invite you to celebrate the wedding of\n💐 *Sheetal & Prakash Ji* 💐\n\n🗓️ *Celebration Dates:*\n🌸 Haldi, 🌿 Mehendi & 🎵 Sangeet — *03 Dec 2026*\n🥁 Bindoli — *04 Dec 2026*\n💍 The Wedding (शुभ विवाह) — *05 Dec 2026*\n\n📍 *Location:*\nhttps://maps.app.goo.gl/xci1FQXozgPz2u698\n\n💌 *Open Your Digital Invitation:*\n🌐 https://sheetal-prakashji.vercel.app/\n\n🪔 Your presence and blessings mean the world to us! ❤️🎉`;
+  const shareMessage = `✨💍 *Shubh Vivah Invitation* 💍✨\n\n🙏 *॥ श्री गणेशाय नमः ॥*\n\n🌸 Together with our families, we joyfully invite you to celebrate the wedding of\n💐 *Sheetal & Prakash Ji* 💐\n\n🗓️ *Celebration Dates:*\n🌸 Haldi — *01 Dec 2026*\n🌿 Mehendi & 🎵 Sangeet — *03 Dec 2026*\n🥁 Bindoli — *04 Dec 2026*\n💍 The Wedding (शुभ विवाह) — *05 Dec 2026*\n\n📍 *Location:*\nhttps://maps.app.goo.gl/xci1FQXozgPz2u698\n\n💌 *Open Your Digital Invitation:*\n🌐 https://sheetal-prakashji.vercel.app/\n\n🪔 Your presence and blessings mean the world to us! ❤️🎉`;
 
   const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
 
